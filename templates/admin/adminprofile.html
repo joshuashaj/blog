@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.name }}{% endblock %}
+{% block profile %}
+<a class="nav-link" href="adminhome">Back</a>
+{% endblock %}
+
+{% block name %}{{ user.name }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Profile Header -->
+    <div class="profile-header text-center">
+        <!-- Profile Picture -->
+        <img src="{{ user.image.url }}" alt="Profile Picture" class="rounded-circle" width="150" height="150">
+
+        <h1>Hello, {{ user.name }}</h1>
+        <p>{{ user.status }}</p>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <!-- Profile Details Card -->
+    <div class="card mt-4">
+        <div class="row">
+            <!-- Info Section -->
+            <div class="col-md-12">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Name:</strong> {{ user.name }}</li>
+                    <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                    <li class="list-group-item"><strong>Password:</strong> ********</li>
+                    <button type="submit" class="btn btn-primary w-100">Edit</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

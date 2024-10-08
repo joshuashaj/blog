@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.name }}{% endblock %}
+{% block profile %}  <a class="nav-link" href="adminprofile">Profile</a> {% endblock %}
+
+{% block name %}{{ user.name }}{% endblock %}
+
+{% block content %}
+
+<h2>Users</h2>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for users in all_users %}
+            <tr>
+                <td>{{ users.name }}</td>
+                <td>{{ users.email }}</td>
+                <td>*********</td>
+                <td>{{ users.status }}</td>
+                <td>
+                    <a href="#"><span class="glyphicon glyphicon-pencil" >Edit</span></a>&nbsp&nbsp
+                    <a href="#">Delete</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.name }}{% endblock %}
+{% block profile %}  <a class="nav-link" href="adminhome">Back</a> {% endblock %}
+
+{% block name %}{{ user.name }}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <h1>Blog</h1>
+        <p>{{ user.name }}</p>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    {% if blog %}
+        {% for blog in blog %}
+            <!-- Profile Details Card -->
+            <div class="card" style="margin:20px">
+                <div class="row">
+                    <!-- Info Section -->
+                    <div class="col-md-12">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Title:</strong> {{ blog.title }}</li>
+                            <li class="list-group-item"><strong>Content:</strong> {{ blog.content }}</li>
+                            <li class="list-group-item"><strong>Created:</strong> {{ blog.created_at|date:"d-m-Y H:i" }}</li>
+                            <li class="list-group-item"><strong>Last Updated:</strong> {{ blog.updated_at|date:"d-m-Y H:i" }}</li>
+                            <div class="d-flex justify-content-center" style="margin:20px;">
+                                <a href="blogedit/{{ blog.id }}" class="btn btn-primary w-50" style="margin:20px;">Edit</a>
+                                <a href="blogdelete/{{ blog.id }}" class="btn btn-primary w-50" style="margin:20px;">Delete</a>
+                            </div>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No blogs available.</p>
+    {% endif %}
+
+</div>
+{% endblock %}
